@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.CreditsFragment">
+
+    <TextView
+        android:id="@+id/nameCredits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/imageCredits"
+        android:layout_width="match_parent"
+        android:layout_height="334dp"
+        android:adjustViewBounds="true"
+        android:padding="25dp"
+        android:src="@drawable/"
+        app:srcCompat="@drawable/ic_menu_send" />
+
+    <TextView
+        android:id="@+id/descriptionCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="something something"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>
