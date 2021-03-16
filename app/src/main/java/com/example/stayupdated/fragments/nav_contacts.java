@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.stayupdated.MainActivity;
 import com.example.stayupdated.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -69,7 +70,7 @@ public class nav_contacts extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nav_contacts, container, false);
-
+        MainActivity.fab.hide();
         return view;
     }
 }
