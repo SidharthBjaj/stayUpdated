@@ -1,5 +1,7 @@
 package com.example.stayupdated.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.stayupdated.MainActivity;
 import com.example.stayupdated.R;
@@ -65,12 +69,62 @@ public class nav_contacts extends Fragment {
         }
     }
 
+    /**
+     * utilized common intents with actual function based on their images
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nav_contacts, container, false);
         MainActivity.fab.hide();
+
+
+        ImageButton call = (ImageButton)view.findViewById(R.id.callButton);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri number = Uri.parse("tel: 5556667777");
+                Intent intent = new Intent(Intent.ACTION_DIAL,number);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton email = (ImageButton)view.findViewById(R.id.emailButton);
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[]emailAddress={"stayUpdated@new.ca"};
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL,emailAddress);
+                intent.putExtra(Intent.EXTRA_TEXT,"Please address my issues :- ");
+                startActivity(intent);
+            }
+        });
+
+
+        ImageButton location = (ImageButton)view.findViewById(R.id.locationButton);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri location = Uri.parse("geo:0,0?q=42.2484642,-83.0225078(St Clair College)");
+                Intent intent = new Intent(Intent.ACTION_VIEW,location);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton website = (ImageButton)view.findViewById(R.id.websiteButton);
+        website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                {
+                    Uri uriUrl = Uri.parse("https://www.stclaircollege.ca/");
+                    Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                    startActivity(launchBrowser);
+                }
+            }
+        });
         return view;
     }
 }
