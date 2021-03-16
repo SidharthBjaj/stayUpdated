@@ -69,7 +69,7 @@ public class ViewPager2Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_view_pager2, container, false);
 /**
- * assigning values to viewpager
+ * assigning values to viewpager using ids from layout
  */
         if (mParam1 != null){
             TextView heading = view.findViewById(R.id.nameCredits);

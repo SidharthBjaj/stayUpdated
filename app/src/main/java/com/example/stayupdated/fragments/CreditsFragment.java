@@ -2,13 +2,22 @@ package com.example.stayupdated.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.stayupdated.R;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +25,7 @@ import com.example.stayupdated.R;
  * create an instance of this fragment.
  */
 public class CreditsFragment extends Fragment {
-
+    ViewPager2 creditsViewPager;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,10 +66,56 @@ public class CreditsFragment extends Fragment {
         }
     }
 
+    /**
+     * inserted values in credits page manually with image
+     * tablayout for bar on top - clickable
+     * also made CustomerAdaptor
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_credits, container, false);
+        View view = inflater.inflate(R.layout.fragment_credits, container, false);
+        creditsViewPager = view.findViewById(R.id.creditsViewPager);
+        creditsViewPager.setAdapter(new CustomViewPager2Adapter(getActivity()));
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        new TabLayoutMediator(tabLayout, creditsViewPager, (tab, position) ->
+                tab.setText("STEP " + (position +1))).attach();
+
+    }
+
+    private class CustomViewPager2Adapter extends FragmentStateAdapter {
+        public CustomViewPager2Adapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+
+                case 0:
+                    return ViewPager2Fragment.newInstance("artist 1", R.drawable.ic_baseline_attachment_24, "\n\n something");
+                case 1:
+                    return ViewPager2Fragment.newInstance("artist 2", R.drawable.ic_baseline_contact_phone_24, "\n\nPeople");
+                case 2:
+                    return ViewPager2Fragment.newInstance("artist 3", R.drawable.ic_baseline_contact_phone_24, "\n\nPeople");
+
+                default:
+                    return ViewPager2Fragment.newInstance("default", R.drawable.side_nav_bar, "none");
+            }
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return 3;
+        }
     }
 }

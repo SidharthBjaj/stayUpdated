@@ -7,33 +7,18 @@
     android:orientation="vertical"
     tools:context=".fragments.CreditsFragment">
 
-    <TextView
-        android:id="@+id/nameCredits"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:text="name"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:layout_height="wrap_content"/>
 
-    <ImageView
-        android:id="@+id/imageCredits"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/creditsViewPager"
         android:layout_width="match_parent"
-        android:layout_height="334dp"
-        android:adjustViewBounds="true"
-        android:padding="25dp"
-        android:src="@drawable/"
-        app:srcCompat="@drawable/ic_menu_send" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" />
 
-    <TextView
-        android:id="@+id/descriptionCredit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:text="something something"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+
 
 </LinearLayout>

@@ -6,17 +6,33 @@
     android:orientation="vertical"
     tools:context=".fragments.ViewPager2Fragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <TextView
+        android:id="@+id/nameCredits"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/creditsViewPager"
+    <ImageView
+        android:id="@+id/imageCredits"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical" />
+        android:layout_height="230dp"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        android:padding="25dp" />
+
+    <TextView
+        android:id="@+id/descriptionCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="something something"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
 
 
