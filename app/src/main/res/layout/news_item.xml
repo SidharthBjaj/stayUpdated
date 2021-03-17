@@ -21,7 +21,8 @@
             android:layout_height="163dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_add_location_24" />
+            app:srcCompat="@drawable/ic_baseline_add_location_24"
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/newsHead"
@@ -38,7 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/newsDesc"
             android:layout_width="184dp"
             android:layout_height="83dp"
             android:layout_marginStart="3dp"
