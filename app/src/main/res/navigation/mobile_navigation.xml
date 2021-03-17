@@ -16,7 +16,12 @@
         tools:layout="@layout/fragment_nav_contacts" />
     <fragment
         android:id="@+id/nav_favorite"
-        android:name="com.example.stayupdated.FavoriteFragment"
+        android:name="com.example.stayupdated.fragments.FavoriteFragment"
         android:label="Favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.stayupdated.NewsFragment"
+        android:label="News"
+        tools:layout="@layout/fragment_news" />
 </navigation>
