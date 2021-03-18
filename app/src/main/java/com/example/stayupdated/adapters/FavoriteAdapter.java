@@ -3,6 +3,9 @@ package com.example.stayupdated.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stayupdated.R;
 import com.example.stayupdated.database.database;
+import com.example.stayupdated.fragments.CreateUpdateFragment;
 import com.example.stayupdated.pojo.favorite;
 import com.squareup.picasso.Picasso;
 
@@ -46,16 +51,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
                     .placeholder(R.drawable.newone)
                     .into(holder.Image);
 //
-//            holder.editButton.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//
-//                public void onClick(View view) { Uri number = Uri.parse("tel: 5199816764");
-//                    Intent i = new Intent(Intent.ACTION_DIAL,number);
-//                    i.setData(Uri.parse(favorite.getEditButton()));
-//                    context.startActivity(i);
-//                }
-//            });
+            holder.editButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Bundle extra = new Bundle();
+                    extra.putInt(CreateUpdateFragment.ACTION_TYPE,
+                            CreateUpdateFragment.UPDATE);
+                    extra.putParcelable(CreateUpdateFragment.FAVORITE,
+                            favoriteItems.get(position));
+                    Navigation.findNavController(view).
+                            navigate(R.id.nav_create, extra);
+                }
+            });
         }
 
         @Override
@@ -68,7 +76,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
             public TextView heading;
             public TextView description;
             public ImageView Image;
-//            public ImageView editButton;
+            public ImageView editButton;
 
             public CustomerViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -76,7 +84,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
                 description = itemView.findViewById(R.id.newsDesc);
                 Image = itemView.findViewById(R.id.imageCard);
                 itemView.setOnLongClickListener(this);
-//                editButton = itemView.findViewById(R.id.imageButtonFav);
+                editButton = itemView.findViewById(R.id.editButton);
             }
 
             @Override
