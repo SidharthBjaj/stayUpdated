@@ -27,14 +27,16 @@ public class database extends SQLiteOpenHelper {
      */
     public static final String COLUMN_ID = "id";
 
-    public static final String COLUMN_NAME = "name"; //location name
-    public static final String COLUMN_DESC = "description"; //location
-    public static final String COLUMN_IMAGE = "image"; //description
+    public static final String COLUMN_NAME = "name"; //name
+    public static final String COLUMN_DESC = "description"; //description
+    public static final String COLUMN_IMAGE = "image"; //image
+    public static final String COLUMN_EDIT = "edit"; //image
+
 
     public static final String CREATE_FAV_TABLE = "CREATE TABLE " +
             TABLE_FAVORITE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," +
             COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
-            COLUMN_IMAGE + " TEXT)";
+             COLUMN_IMAGE + " TEXT)";
 
     public database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -57,6 +59,8 @@ public class database extends SQLiteOpenHelper {
         values.put(COLUMN_NAME, fav.getHeading());
         values.put(COLUMN_DESC, fav.getDescription());
         values.put(COLUMN_IMAGE, fav.getImageUrl());
+//        values.put(COLUMN_EDIT, fav.getEditButton());
+
 
         db.insert(TABLE_FAVORITE,null,values);
         db.close();
@@ -66,7 +70,7 @@ public class database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         favorite favorite = null;
         Cursor cursor = db.query(TABLE_FAVORITE,
-                new String[]{COLUMN_ID,COLUMN_NAME,COLUMN_DESC,COLUMN_IMAGE},COLUMN_ID + "= ?",
+                new String[]{COLUMN_ID,COLUMN_NAME,COLUMN_DESC,COLUMN_IMAGE,COLUMN_EDIT},COLUMN_ID + "= ?",
         new String[]{String.valueOf(id)},null,null,null);
 
         if (cursor.moveToFirst()){
@@ -75,6 +79,7 @@ public class database extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3)
+//                    cursor.getString(4)
             );
         }
         db.close();
@@ -94,6 +99,7 @@ public class database extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3)
+//                    cursor.getString(4)
             ));
         }
         db.close();

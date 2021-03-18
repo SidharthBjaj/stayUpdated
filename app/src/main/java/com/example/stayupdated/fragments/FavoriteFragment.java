@@ -79,7 +79,8 @@ public class FavoriteFragment extends Fragment {
         ArrayList<favorite> favorites = db.getAllFavorites();
 //
 //    ArrayList<favorite> favorites = new ArrayList<>();
-//    db.addFavorite(new favorite("first input","first description","http://tigerday.org/wp-content/uploads/2013/04/Siberischer_tiger.jpg"));
+//    db.addFavorite(new favorite("first input","first description","points to added"));
+//    db.addFavorite(new favorite("second input","second/**/ description","points to added"));
 //
 //        ArrayList<favorite> favorites = new ArrayList<>();
 //        favorites.add(new favorite("Curry",

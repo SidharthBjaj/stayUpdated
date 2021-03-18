@@ -3,6 +3,7 @@ package com.example.stayupdated.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stayupdated.NewAdapter;
@@ -45,8 +45,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
             holder.heading.setText(favorite.getHeading());
             holder.description.setText(favorite.getDescription());
             Picasso.get().load(favorite.getImageUrl())
-                    .placeholder(R.drawable.ic_baseline_attachment_24)
+                    .placeholder(R.drawable.newone)
                     .into(holder.Image);
+//
+//            holder.editButton.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//
+//                public void onClick(View view) { Uri number = Uri.parse("tel: 5199816764");
+//                    Intent i = new Intent(Intent.ACTION_DIAL,number);
+//                    i.setData(Uri.parse(favorite.getEditButton()));
+//                    context.startActivity(i);
+//                }
+//            });
         }
 
         @Override
@@ -59,13 +70,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
             public TextView heading;
             public TextView description;
             public ImageView Image;
+//            public ImageView editButton;
 
             public CustomerViewHolder(@NonNull View itemView) {
                 super(itemView);
                 heading = itemView.findViewById(R.id.newsHead);
                 description = itemView.findViewById(R.id.newsDesc);
                 Image = itemView.findViewById(R.id.imageCard);
-
+//                editButton = itemView.findViewById(R.id.imageButtonFav);
             }
         }
     }

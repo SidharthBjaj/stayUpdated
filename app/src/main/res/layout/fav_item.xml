@@ -20,6 +20,9 @@
             android:id="@+id/imageFav"
             android:layout_width="164dp"
             android:layout_height="163dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_location_24"
@@ -42,7 +45,7 @@
         <TextView
             android:id="@+id/newsDescFav"
             android:layout_width="186dp"
-            android:layout_height="75dp"
+            android:layout_height="96dp"
             android:layout_marginStart="3dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="28dp"
@@ -55,16 +58,6 @@
             app:layout_constraintTop_toBottomOf="@+id/newsHeadFav"
             app:layout_constraintVertical_bias="0.333" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="186dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="29dp"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newsDescFav" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
