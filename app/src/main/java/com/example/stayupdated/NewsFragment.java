@@ -87,7 +87,7 @@ public class NewsFragment extends Fragment {
          */
         ArrayList<news> newsArrayList = new ArrayList<>();
 
-        RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
+        RecyclerView recyclerView = view.findViewById(R.id.newsList);
         /**
          * trying to load data from api
          */

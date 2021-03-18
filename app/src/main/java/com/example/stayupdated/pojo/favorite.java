@@ -4,6 +4,17 @@ public class favorite {
     public String heading;
     public String description;
     public String imageUrl;
+    private int id;
+
+
+
+    public favorite( int id,String heading, String description, String imageUrl) {
+        this.id = id;
+        this.heading = heading;
+        this.description = description;
+        this.imageUrl = imageUrl;
+
+    }
 
     public favorite(String heading, String description, String imageUrl) {
         this.heading = heading;
@@ -33,5 +44,12 @@ public class favorite {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
