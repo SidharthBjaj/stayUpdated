@@ -114,5 +114,12 @@ public class database extends SQLiteOpenHelper {
         return db.update(TABLE_FAVORITE,values,COLUMN_ID+ "=?", new String[]{String.valueOf(favorite.getId())});
     }
 
+    public void deleteLocation(int location){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_FAVORITE, COLUMN_ID +  "=?",
+                new String[]{String.valueOf(location)});
+        db.close();
+    }
+
 
 }

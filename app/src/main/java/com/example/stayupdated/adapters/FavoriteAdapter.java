@@ -1,6 +1,8 @@
 package com.example.stayupdated.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stayupdated.R;
+import com.example.stayupdated.database.database;
 import com.example.stayupdated.pojo.favorite;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +63,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
             return favoriteItems.size();
         }
 
-        class CustomerViewHolder extends RecyclerView.ViewHolder{
+        class CustomerViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
 
             public TextView heading;
             public TextView description;
@@ -72,7 +75,36 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Custom
                 heading = itemView.findViewById(R.id.newsHead);
                 description = itemView.findViewById(R.id.newsDesc);
                 Image = itemView.findViewById(R.id.imageCard);
+                itemView.setOnLongClickListener(this);
 //                editButton = itemView.findViewById(R.id.imageButtonFav);
+            }
+
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete")
+                        .setMessage("Are you sure you want to delete " +
+                                favoriteItems.get(getLayoutPosition()).getHeading() + "?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                /* TODO
+                                 *  - Add code to remove location from database when SQL is finished
+                                 */
+                                database db = new database(context);
+                                //Delete record from database
+                                db.deleteLocation(favoriteItems.get(getLayoutPosition()).getId());
+                                //Delete the record from the ArrayList
+                                favoriteItems.remove(getLayoutPosition());
+                                //Notify the RecyclerView the item was removed
+                                notifyItemRemoved(getAdapterPosition());
+                                db.close();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+                return false;
             }
         }
     }
