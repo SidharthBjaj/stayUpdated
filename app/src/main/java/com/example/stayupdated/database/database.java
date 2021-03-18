@@ -70,7 +70,7 @@ public class database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         favorite favorite = null;
         Cursor cursor = db.query(TABLE_FAVORITE,
-                new String[]{COLUMN_ID,COLUMN_NAME,COLUMN_DESC,COLUMN_IMAGE,COLUMN_EDIT},COLUMN_ID + "= ?",
+                new String[]{COLUMN_ID,COLUMN_NAME,COLUMN_DESC,COLUMN_IMAGE},COLUMN_ID + "= ?",
         new String[]{String.valueOf(id)},null,null,null);
 
         if (cursor.moveToFirst()){
@@ -104,6 +104,14 @@ public class database extends SQLiteOpenHelper {
         }
         db.close();
         return favorites;
+    }
+    public int updateData(favorite favorite){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, favorite.getHeading());
+        values.put(COLUMN_DESC, favorite.getDescription());
+//        values.put(COLUMN_GEO, favorite.getButton());
+        return db.update(TABLE_FAVORITE,values,COLUMN_ID+ "=?", new String[]{String.valueOf(favorite.getId())});
     }
 
 

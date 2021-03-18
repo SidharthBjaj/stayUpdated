@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:useDefaultMargins="true"
+    tools:context=".fragments.CreateUpdateFragment">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Member Name" />
+
+    <EditText
+        android:id="@+id/memberName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Member Position" />
+
+    <EditText
+        android:id="@+id/positionText"
+        android:layout_width="wrap_content"
+        android:layout_height="235dp"
+        android:ems="10"
+        android:inputType="textMultiLine|textPersonName" />
+
+
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+
+        android:text="Button" />
+</GridLayout>

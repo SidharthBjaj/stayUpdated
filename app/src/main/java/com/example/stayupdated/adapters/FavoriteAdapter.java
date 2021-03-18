@@ -1,9 +1,6 @@
-package com.example.stayupdated.fragments;
+package com.example.stayupdated.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.stayupdated.NewAdapter;
 import com.example.stayupdated.R;
 import com.example.stayupdated.pojo.favorite;
-import com.example.stayupdated.pojo.news;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -18,10 +18,19 @@
         android:id="@+id/nav_favorite"
         android:name="com.example.stayupdated.fragments.FavoriteFragment"
         android:label="Favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_nav_favorite_to_createUpdateFragment"
+            app:destination="@id/nav_create" />
+    </fragment>
     <fragment
         android:id="@+id/nav_news"
         android:name="com.example.stayupdated.NewsFragment"
         android:label="News"
         tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/nav_create"
+        android:name="com.example.stayupdated.fragments.CreateUpdateFragment"
+        android:label="Create/Update"
+        tools:layout="@layout/fragment_create_update" />
 </navigation>

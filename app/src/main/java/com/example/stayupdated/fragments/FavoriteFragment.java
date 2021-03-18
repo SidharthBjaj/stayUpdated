@@ -3,6 +3,7 @@ package com.example.stayupdated.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.stayupdated.NewAdapter;
 import com.example.stayupdated.R;
+import com.example.stayupdated.adapters.FavoriteAdapter;
 import com.example.stayupdated.database.database;
 import com.example.stayupdated.pojo.favorite;
 
 import java.util.ArrayList;
+
+import static com.example.stayupdated.MainActivity.fab;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +77,15 @@ public class FavoriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
-
+        fab.show();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle extra = new Bundle();
+                extra.putInt(CreateUpdateFragment.ACTION_TYPE, CreateUpdateFragment.CREATE);
+                Navigation.findNavController(view).navigate(R.id.nav_create,extra);
+            }
+        });
         database db = new database(getContext());
         ArrayList<favorite> favorites = db.getAllFavorites();
 //
