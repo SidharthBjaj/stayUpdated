@@ -77,6 +77,18 @@ public class FavoriteFragment extends Fragment {
 
         database db = new database(getContext());
         ArrayList<favorite> favorites = db.getAllFavorites();
+//
+//    ArrayList<favorite> favorites = new ArrayList<>();
+//    db.addFavorite(new favorite("first input","first description","http://tigerday.org/wp-content/uploads/2013/04/Siberischer_tiger.jpg"));
+//
+//        ArrayList<favorite> favorites = new ArrayList<>();
+//        favorites.add(new favorite("Curry",
+//                "A nice dish with spice","http://www.currylover9.com"));
+//        favorites.add(new favorite("Shepherds Pie",
+//                "A nice dish with lamb","http://www.shepherdspielover9.com"));
+//        favorites.add(new favorite(0,"Fish and Chips",
+//                "a deadly dish","http://www.fishandchipslover9.com"));
+
         db.close();
 
         FavoriteAdapter adapter = new FavoriteAdapter(favorites,getContext());

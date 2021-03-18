@@ -33,8 +33,8 @@ public class database extends SQLiteOpenHelper {
 
     public static final String CREATE_FAV_TABLE = "CREATE TABLE " +
             TABLE_FAVORITE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," +
-            COLUMN_NAME + "TEXT, " + COLUMN_DESC + "TEXT, " +
-            COLUMN_IMAGE + "TEXT)";
+            COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
+            COLUMN_IMAGE + " TEXT)";
 
     public database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
