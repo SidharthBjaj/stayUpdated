@@ -77,6 +77,7 @@ public class FavoriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
+        fab.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
         fab.show();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
