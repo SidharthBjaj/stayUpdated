@@ -11,15 +11,15 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_const"
+        android:id="@+id/layout_const_fav"
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
 
         <ImageView
             android:id="@+id/imageFav"
-            android:layout_width="164dp"
-            android:layout_height="163dp"
+            android:layout_width="133dp"
+            android:layout_height="90dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,33 +30,56 @@
 
         <TextView
             android:id="@+id/newsHeadFav"
-            android:layout_width="185dp"
-            android:layout_height="22dp"
+            android:layout_width="366dp"
+            android:layout_height="38dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="29dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageCard"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/newsDescFav"
-            android:layout_width="186dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="3dp"
+            android:layout_width="237dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginEnd="5dp"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageCard"
-            app:layout_constraintTop_toBottomOf="@+id/newsHeadFav"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintStart_toEndOf="@+id/imageFav"
+            app:layout_constraintTop_toBottomOf="@+id/newsHeadFav" />
+
+        <TextView
+            android:id="@+id/sourceNews"
+            android:layout_width="126dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/newsDescFav"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageFav" />
+
+        <TextView
+            android:id="@+id/publishDate"
+            android:layout_width="203dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="5dp"
+            android:text="TextView"
+            android:textAlignment="textEnd"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsDescFav" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

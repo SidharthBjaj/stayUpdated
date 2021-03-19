@@ -31,7 +31,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
     @NonNull
     @Override
     public CustomerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fav_item,parent,false);
         return new CustomerViewHolder(view);
     }
 
@@ -41,9 +41,11 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         news news = newsItems.get(position);
         holder.heading.setText(news.getHeading());
         holder.description.setText(news.getDescription());
-        Picasso.get().load(news.getImageUrl())
-                .placeholder(R.drawable.ic_baseline_attachment_24)
-                .into(holder.Image);
+        holder.publish.setText(news.getPublishDate());
+        holder.source.setText(news.getSource());
+//        Picasso.get().load(news.getImageUrl())
+//                .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
+//                .into(holder.Image);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,15 +65,22 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
 
         public TextView heading;
         public TextView description;
-        public ImageView Image;
+//        public ImageView Image;
         public ConstraintLayout layout;
+        public TextView source;
+        public TextView publish;
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
-            heading = itemView.findViewById(R.id.newsHead);
-            description = itemView.findViewById(R.id.newsDesc);
-            Image = itemView.findViewById(R.id.imageCard);
-            layout = itemView.findViewById(R.id.layout_const);
+            heading = itemView.findViewById(R.id.newsHeadFav);
+            description = itemView.findViewById(R.id.newsDescFav);
+//            Image = itemView.findViewById(R.id.imageFav);
+            layout = itemView.findViewById(R.id.layout_const_fav);
+            source = itemView.findViewById(R.id.sourceNews);
+            publish = itemView.findViewById(R.id.publishDate);
+
+
+
 
         }
     }
