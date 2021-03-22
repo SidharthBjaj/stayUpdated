@@ -20,17 +20,26 @@
         android:label="Favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
-            android:id="@+id/action_nav_favorite_to_createUpdateFragment"
+            android:id="@+id/action_nav_favorite_to_nav_create"
             app:destination="@id/nav_create" />
     </fragment>
     <fragment
         android:id="@+id/nav_news"
-        android:name="com.example.stayupdated.NewsFragment"
+        android:name="com.example.stayupdated.fragments.NewsFragment"
         android:label="News"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_nav_news_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_create"
         android:name="com.example.stayupdated.fragments.CreateUpdateFragment"
         android:label="Create/Update"
         tools:layout="@layout/fragment_create_update" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.stayupdated.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

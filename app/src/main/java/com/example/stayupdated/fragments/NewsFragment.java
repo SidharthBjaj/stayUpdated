@@ -1,6 +1,5 @@
-package com.example.stayupdated;
+package com.example.stayupdated.fragments;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,21 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.stayupdated.MainActivity;
+import com.example.stayupdated.R;
 import com.example.stayupdated.adapters.NewAdapter;
 import com.example.stayupdated.pojo.news;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,8 +95,8 @@ public class NewsFragment extends Fragment {
 //
 
 //
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
 //        final ProgressDialog progressDialog = new ProgressDialog(getContext());
 //        progressDialog.setMessage("loading");
@@ -120,12 +114,12 @@ public class NewsFragment extends Fragment {
                             JSONArray newsArticles = response.getJSONArray("results");
 //                            JSONArray newsImage = response.getJSONArray("multimedia");
 
-                            for (int i = 0; i < 2; i++) {
+                            for (int i = 0; i < 5; i++) {
                                 JSONObject article = newsArticles.getJSONObject(i);
 
                                 String title = article.getString("title");
                                 String description = article.getString("abstract");
-//                                String urlToImage = article.getString("multimedia:[{url}]");
+//                                String urlToImage = article.getString("multimedia:{url}");
                                 String url = article.getString("url");
                                 String source = article.getString("byline");
                                 String publish = article.getString("published_date");
@@ -158,7 +152,7 @@ public class NewsFragment extends Fragment {
 //        requestQueue.add(jsonObjectRequest);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
-
+        MainActivity.fab.hide();
         NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
