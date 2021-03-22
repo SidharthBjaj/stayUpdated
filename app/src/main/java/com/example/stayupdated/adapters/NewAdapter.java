@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.stayupdated.DetailsActivity;
 import com.example.stayupdated.R;
 import com.example.stayupdated.pojo.news;
 import com.squareup.picasso.Picasso;
@@ -50,7 +51,12 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.getDetailUrl()));
+                Intent intent = new Intent(context,DetailsActivity.class);
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.getDetailUrl()));
+                intent.putExtra("title",news.getHeading());
+                intent.putExtra("abstract",news.getDescription());
+                intent.putExtra("byLine",news.getSource());
+                intent.putExtra("url",news.getDetailUrl());
                 context.startActivity(intent);
             }
         });
