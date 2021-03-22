@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Member Name" />
+        android:text="Article Heading" />
 
     <EditText
         android:id="@+id/memberName"
@@ -25,7 +25,7 @@
         android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Member Position" />
+        android:text="Article Notes" />
 
     <EditText
         android:id="@+id/positionText"
