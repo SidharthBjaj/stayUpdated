@@ -112,16 +112,6 @@
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="6dp">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-
                 <ProgressBar
                     android:id="@+id/webViewLoader"
                     android:layout_width="30dp"
@@ -131,7 +121,7 @@
                 <WebView
                     android:id="@+id/webView"
                     android:layout_width="match_parent"
-                    android:layout_height="392dp" >
+                    android:layout_height="wrap_content">
 
                 </WebView>
 

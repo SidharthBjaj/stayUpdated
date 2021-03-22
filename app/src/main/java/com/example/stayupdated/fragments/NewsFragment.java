@@ -1,5 +1,6 @@
 package com.example.stayupdated.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -40,7 +41,6 @@ public class NewsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String REQUEST_URL = "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=26349142ab734d36820657e1b2658eef";
     private static final String TAG = NewsFragment.class.getName();
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -92,15 +92,13 @@ public class NewsFragment extends Fragment {
         /**
          * trying to load data from api
          */
-//
 
-//
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
-//        final ProgressDialog progressDialog = new ProgressDialog(getContext());
-//        progressDialog.setMessage("loading");
-//        progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("loading");
+        progressDialog.show();
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
@@ -133,9 +131,13 @@ public class NewsFragment extends Fragment {
                                 System.out.println(url);
                                 System.out.println(source);
 //                                System.out.println(urlToImage);
+                                NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
+                                recyclerView.setAdapter(adapter);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
                             }
-//                            progressDialog.show();
+
+                            progressDialog.show();
 //                            recyclerView.setVisibility(View.VISIBLE);
                         } catch (JSONException e) {
                             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
@@ -153,9 +155,7 @@ public class NewsFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
         MainActivity.fab.hide();
-        NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         return view;
     }
 }
