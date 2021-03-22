@@ -96,9 +96,6 @@ public class NewsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("loading");
-        progressDialog.show();
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
@@ -110,7 +107,6 @@ public class NewsFragment extends Fragment {
                         try {
 
                             JSONArray newsArticles = response.getJSONArray("results");
-//                            JSONArray newsImage = response.getJSONArray("multimedia");
 
                             for (int i = 0; i < 5; i++) {
                                 JSONObject article = newsArticles.getJSONObject(i);
@@ -137,8 +133,6 @@ public class NewsFragment extends Fragment {
 
                             }
 
-                            progressDialog.show();
-//                            recyclerView.setVisibility(View.VISIBLE);
                         } catch (JSONException e) {
                             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
