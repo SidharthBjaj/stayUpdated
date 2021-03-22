@@ -5,21 +5,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_credits"
-            android:icon="@drawable/ic_baseline_attachment_24"
-            android:title="Credits" />
-        <item
-            android:id="@+id/nav_contacts"
-            android:icon="@drawable/ic_baseline_contact_phone_24"
-            android:title="Contact Us" />
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_baseline_web_24"
+            android:title="News" />
         <item
             android:id="@+id/nav_favorite"
             android:icon="@drawable/ic_baseline_save_alt_24"
             android:title="Favorite" />
         <item
-            android:id="@+id/nav_news"
-            android:icon="@drawable/ic_baseline_web_24"
-            android:title="News" />
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/ic_baseline_contact_phone_24"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_credits"
+            android:icon="@drawable/ic_baseline_attachment_24"
+            android:title="Credits" />
+
+
+
 
     </group>
 </menu>
