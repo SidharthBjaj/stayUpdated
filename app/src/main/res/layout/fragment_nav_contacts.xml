@@ -12,7 +12,7 @@
         android:layout_width="400dp"
         android:layout_height="147dp"
         android:layout_marginTop="15dp"
-        android:src="@drawable/ic_menu_camera"
+        android:src="@drawable/news"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
