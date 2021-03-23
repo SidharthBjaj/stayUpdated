@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,8 +28,10 @@ import com.example.stayupdated.pojo.news;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,12 +96,16 @@ public class NewsFragment extends Fragment {
          * trying to load data from api
          */
 
+        SwipeRefreshLayout swipeRefreshLayout;
+        swipeRefreshLayout = view.findViewById(R.id.refresh);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
+        swipeRefreshLayout.setRefreshing(true);
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, newsUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -108,7 +115,7 @@ public class NewsFragment extends Fragment {
 
                             JSONArray newsArticles = response.getJSONArray("results");
 
-                            for (int i = 0; i < 5; i++) {
+                            for (int i = 0; i < newsArticles.length(); i++) {
                                 JSONObject article = newsArticles.getJSONObject(i);
 
                                 String title = article.getString("title");
@@ -127,10 +134,22 @@ public class NewsFragment extends Fragment {
                                 System.out.println(url);
                                 System.out.println(source);
 //                                System.out.println(urlToImage);
+
                                 NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
                                 recyclerView.setAdapter(adapter);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+                                swipeRefreshLayout.setRefreshing(false);
+
+                                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                    @Override
+                                    public void onRefresh() {
+                                        NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
+                                        recyclerView.setAdapter(adapter);
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                                    }
+                                });
                             }
 
                         } catch (JSONException e) {
@@ -145,6 +164,8 @@ public class NewsFragment extends Fragment {
 
                     }
                 });
+
+
 //        requestQueue.add(jsonObjectRequest);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
@@ -152,4 +173,5 @@ public class NewsFragment extends Fragment {
 
         return view;
     }
+
 }

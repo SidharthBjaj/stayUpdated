@@ -84,7 +84,7 @@ public class nav_contacts extends Fragment {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri number = Uri.parse("tel: 5556667777");
+                Uri number = Uri.parse("tel: 5199816764");
                 Intent intent = new Intent(Intent.ACTION_DIAL,number);
                 startActivity(intent);
             }
@@ -94,7 +94,7 @@ public class nav_contacts extends Fragment {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[]emailAddress={"stayUpdated@new.ca"};
+                String[]emailAddress={"bsid1199@gmail.com"};
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:"));
                 intent.putExtra(Intent.EXTRA_EMAIL,emailAddress);
@@ -119,7 +119,7 @@ public class nav_contacts extends Fragment {
             @Override
             public void onClick(View v) {
                 {
-                    Uri uriUrl = Uri.parse("https://www.stclaircollege.ca/");
+                    Uri uriUrl = Uri.parse("https://www.linkedin.com/in/sbajaj23");
                     Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
                     startActivity(launchBrowser);
                 }

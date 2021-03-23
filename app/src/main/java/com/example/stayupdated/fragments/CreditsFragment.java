@@ -101,14 +101,16 @@ public class CreditsFragment extends Fragment {
             switch (position) {
 
                 case 0:
-                    return ViewPager2Fragment.newInstance("artist 1", R.drawable.ic_baseline_attachment_24, "\n\n something");
+                    return ViewPager2Fragment.newInstance("Phone Icon", R.drawable.telephone, "\n\nTelephone Icon");
                 case 1:
-                    return ViewPager2Fragment.newInstance("artist 2", R.drawable.ic_baseline_contact_phone_24, "\n\nPeople");
+                    return ViewPager2Fragment.newInstance("Maps Icon", R.drawable.googlemaps, "\n\nMaps");
                 case 2:
-                    return ViewPager2Fragment.newInstance("artist 3", R.drawable.ic_baseline_contact_phone_24, "\n\nPeople");
+                    return ViewPager2Fragment.newInstance("LinkedIn Icon", R.drawable.linkedin, "\n\nlinkedIn");
+                case 3:
+                    return ViewPager2Fragment.newInstance("Gmail Icon", R.drawable.gmail, "\n\nGmail Icon");
 
                 default:
-                    return ViewPager2Fragment.newInstance("default", R.drawable.side_nav_bar, "none");
+                    return ViewPager2Fragment.newInstance("default", R.drawable.telephone, "none");
             }
         }
 
