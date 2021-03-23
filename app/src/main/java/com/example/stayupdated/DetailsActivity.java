@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+
+
         tvTitle = findViewById(R.id.tvTitle);
         tvSource = findViewById(R.id.tvSource);
         tvTime = findViewById(R.id.tvDate);
@@ -35,7 +38,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
-//        String source = intent.getStringExtra("abstract");
         String time = intent.getStringExtra("byLine");
         String desc = intent.getStringExtra("abstract");
 //        String imageUrl = intent.getStringExtra("imageUrl");
@@ -43,7 +45,6 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         tvTitle.setText(title);
-//        tvSource.setText(source);
         tvTime.setText(time);
         tvDesc.setText(desc);
 

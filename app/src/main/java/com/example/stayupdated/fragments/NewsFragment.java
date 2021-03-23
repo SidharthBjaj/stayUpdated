@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -98,6 +100,7 @@ public class NewsFragment extends Fragment {
 
         SwipeRefreshLayout swipeRefreshLayout;
         swipeRefreshLayout = view.findViewById(R.id.refresh);
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
