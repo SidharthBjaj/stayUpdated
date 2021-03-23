@@ -101,13 +101,15 @@ public class CreditsFragment extends Fragment {
             switch (position) {
 
                 case 0:
-                    return ViewPager2Fragment.newInstance("Phone Icon", R.drawable.telephone, "\n\nTelephone Icon");
+                    return ViewPager2Fragment.newInstance("Phone Icon", R.drawable.telephone, "\n\nThis cover has been designed using resources from Flaticon.com");
                 case 1:
-                    return ViewPager2Fragment.newInstance("Maps Icon", R.drawable.googlemaps, "\n\nMaps");
+                    return ViewPager2Fragment.newInstance("Maps Icon", R.drawable.googlemaps, "\n\nThis cover has been designed using resources from Flaticon.com");
                 case 2:
-                    return ViewPager2Fragment.newInstance("LinkedIn Icon", R.drawable.linkedin, "\n\nlinkedIn");
+                    return ViewPager2Fragment.newInstance("LinkedIn Icon", R.drawable.linkedin, "\n\nThis cover has been designed using resources from Flaticon.com");
                 case 3:
-                    return ViewPager2Fragment.newInstance("Gmail Icon", R.drawable.gmail, "\n\nGmail Icon");
+                    return ViewPager2Fragment.newInstance("Gmail Icon", R.drawable.gmail, "\n\nThis cover has been designed using resources from Flaticon.com");
+                case 4:
+                    return ViewPager2Fragment.newInstance("Contact Us", R.drawable.newpage, "\n\nImage By Visuals from UnSplash");
 
                 default:
                     return ViewPager2Fragment.newInstance("default", R.drawable.telephone, "none");
@@ -115,9 +117,11 @@ public class CreditsFragment extends Fragment {
         }
 
 
+
+
         @Override
         public int getItemCount() {
-            return 3;
+            return 5;
         }
     }
 }
