@@ -30,7 +30,6 @@ import com.example.stayupdated.pojo.news;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -98,17 +97,16 @@ public class NewsFragment extends Fragment {
          * trying to load data from api
          */
 
-        SwipeRefreshLayout swipeRefreshLayout;
-        swipeRefreshLayout = view.findViewById(R.id.refresh);
+//        SwipeRefreshLayout swipeRefreshLayout;
+//        swipeRefreshLayout = view.findViewById(R.id.refresh);
 
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
-        swipeRefreshLayout.setRefreshing(true);
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, newsUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -123,36 +121,25 @@ public class NewsFragment extends Fragment {
 
                                 String title = article.getString("title");
                                 String description = article.getString("abstract");
-//                                String urlToImage = article.getString("multimedia:{url}");
+
+                                String urlToImage = article.getJSONArray("multimedia").getJSONObject(0).getString("url");
+
                                 String url = article.getString("url");
                                 String source = article.getString("byline");
                                 String publish = article.getString("published_date");
 
-
-//                                newsArrayList.add(new news(title, description, urlToImage,url));
-                                newsArrayList.add(new news(title, description, url,source,publish));
+                                newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
 
                                 System.out.println(title);
                                 System.out.println(description);
                                 System.out.println(url);
                                 System.out.println(source);
-//                                System.out.println(urlToImage);
+                                System.out.println(urlToImage);
 
                                 NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
                                 recyclerView.setAdapter(adapter);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                                swipeRefreshLayout.setRefreshing(false);
-
-                                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                                    @Override
-                                    public void onRefresh() {
-                                        NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
-                                        recyclerView.setAdapter(adapter);
-                                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-                                    }
-                                });
                             }
 
                         } catch (JSONException e) {
@@ -169,7 +156,6 @@ public class NewsFragment extends Fragment {
                 });
 
 
-//        requestQueue.add(jsonObjectRequest);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);
         MainActivity.fab.hide();

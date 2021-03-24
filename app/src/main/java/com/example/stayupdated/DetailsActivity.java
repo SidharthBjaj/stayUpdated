@@ -3,6 +3,7 @@ package com.example.stayupdated;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +12,8 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
     TextView tvTitle,tvSource,tvTime,tvDesc;
@@ -28,7 +31,6 @@ public class DetailsActivity extends AppCompatActivity {
         tvSource = findViewById(R.id.tvSource);
         tvTime = findViewById(R.id.tvDate);
         tvDesc = findViewById(R.id.tvDesc);
-
         imageView = findViewById(R.id.imageView);
 
         webView = findViewById(R.id.webView);
@@ -40,15 +42,17 @@ public class DetailsActivity extends AppCompatActivity {
         String title = intent.getStringExtra("title");
         String time = intent.getStringExtra("byLine");
         String desc = intent.getStringExtra("abstract");
-//        String imageUrl = intent.getStringExtra("imageUrl");
+        String imageUrl = intent.getStringExtra("imageUrl");
         String url = intent.getStringExtra("url");
 
 
         tvTitle.setText(title);
         tvTime.setText(time);
         tvDesc.setText(desc);
+//        imageView.setImageResource();
 
-//        Picasso.with(Detailed.this).load(imageUrl).into(imageView);
+//        Picasso.(DetailsActivity.this).load(imageUrl).into(imageView);
+       Picasso.get().load(imageUrl).into(imageView);
 
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);

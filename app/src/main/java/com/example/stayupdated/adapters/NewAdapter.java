@@ -44,10 +44,10 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         holder.description.setText(news.getDescription());
         holder.publish.setText(news.getPublishDate());
         holder.source.setText(news.getSource());
-//        Picasso.get().load(news.getImageUrl())
-//                .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
-//                .into(holder.Image);
-
+        Picasso.get().load(news.getImageUrl())
+                .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
+                .into(holder.Image);
+        
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +57,8 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
                 intent.putExtra("abstract",news.getDescription());
                 intent.putExtra("byLine",news.getSource());
                 intent.putExtra("url",news.getDetailUrl());
+                intent.putExtra("urlToImage",news.getImageUrl());
+//                intent.putExtra("")
                 context.startActivity(intent);
             }
         });
@@ -71,7 +73,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
 
         public TextView heading;
         public TextView description;
-//        public ImageView Image;
+        public ImageView Image;
         public ConstraintLayout layout;
         public TextView source;
         public TextView publish;
@@ -80,13 +82,10 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
             super(itemView);
             heading = itemView.findViewById(R.id.newsHeadFav);
             description = itemView.findViewById(R.id.newsDescFav);
-//            Image = itemView.findViewById(R.id.imageFav);
+            Image = itemView.findViewById(R.id.imageFav);
             layout = itemView.findViewById(R.id.layout_const_fav);
             source = itemView.findViewById(R.id.sourceNews);
             publish = itemView.findViewById(R.id.publishDate);
-
-
-
 
         }
     }

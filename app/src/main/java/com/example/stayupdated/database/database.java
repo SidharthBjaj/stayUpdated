@@ -59,7 +59,6 @@ public class database extends SQLiteOpenHelper {
         values.put(COLUMN_NAME, fav.getHeading());
         values.put(COLUMN_DESC, fav.getDescription());
         values.put(COLUMN_IMAGE, fav.getImageUrl());
-//        values.put(COLUMN_EDIT, fav.getEditButton());
 
 
         db.insert(TABLE_FAVORITE,null,values);
@@ -79,7 +78,6 @@ public class database extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3)
-//                    cursor.getString(4)
             );
         }
         db.close();
@@ -99,7 +97,6 @@ public class database extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3)
-//                    cursor.getString(4)
             ));
         }
         db.close();
@@ -110,7 +107,6 @@ public class database extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, favorite.getHeading());
         values.put(COLUMN_DESC, favorite.getDescription());
-//        values.put(COLUMN_GEO, favorite.getButton());
         return db.update(TABLE_FAVORITE,values,COLUMN_ID+ "=?", new String[]{String.valueOf(favorite.getId())});
     }
 

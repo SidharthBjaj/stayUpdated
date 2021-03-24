@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StayUpdated">
         <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

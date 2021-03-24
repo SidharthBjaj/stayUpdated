@@ -13,18 +13,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_const_fav"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
 
 
         <ImageView
             android:id="@+id/imageFav"
             android:layout_width="133dp"
             android:layout_height="90dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/sourceNews"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsHeadFav"
             app:srcCompat="@drawable/newone"
             tools:ignore="VectorDrawableCompat" />
 
@@ -45,10 +45,10 @@
 
         <TextView
             android:id="@+id/newsDescFav"
-            android:layout_width="237dp"
-            android:layout_height="116dp"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
             android:text="TextView"
             android:textColor="#FFFFFF"
@@ -62,7 +62,7 @@
             android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="5dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -73,13 +73,13 @@
 
         <TextView
             android:id="@+id/publishDate"
-            android:layout_width="203dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="3dp"
+            android:layout_width="191dp"
+            android:layout_height="26dp"
             android:layout_marginEnd="5dp"
             android:inputType="datetime"
             android:textAlignment="textEnd"
             android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newsDescFav" />
 
