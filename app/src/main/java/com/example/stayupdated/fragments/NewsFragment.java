@@ -97,12 +97,6 @@ public class NewsFragment extends Fragment {
          * trying to load data from api
          */
 
-//        SwipeRefreshLayout swipeRefreshLayout;
-//        swipeRefreshLayout = view.findViewById(R.id.refresh);
-
-
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.setAdapter(new NewAdapter(newsArrayList, getContext()));
 
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
@@ -143,7 +137,7 @@ public class NewsFragment extends Fragment {
                             }
 
                         } catch (JSONException e) {
-                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }

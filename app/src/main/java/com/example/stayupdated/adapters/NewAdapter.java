@@ -1,6 +1,8 @@
 package com.example.stayupdated.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stayupdated.DetailsActivity;
 import com.example.stayupdated.R;
+import com.example.stayupdated.database.database;
 import com.example.stayupdated.pojo.news;
 import com.squareup.picasso.Picasso;
 
@@ -47,7 +50,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         Picasso.get().load(news.getImageUrl())
                 .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
                 .into(holder.Image);
-        
+
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
