@@ -22,6 +22,8 @@ import com.example.stayupdated.R;
 import com.example.stayupdated.database.database;
 import com.example.stayupdated.pojo.favorite;
 import com.example.stayupdated.pojo.news;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -71,7 +73,11 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
             public boolean onLongClick(View v) {
                 database db = new database(context);
                 db.addFavorite(new favorite(news.heading,news.description,news.imageUrl));
-                return false;
+                CharSequence text = "Article added to database";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                return true;
             }
         });
     }

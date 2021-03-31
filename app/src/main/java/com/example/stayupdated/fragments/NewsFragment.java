@@ -1,9 +1,12 @@
 package com.example.stayupdated.fragments;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +45,10 @@ import java.util.Locale;
  * create an instance of this fragment.
  */
 public class NewsFragment extends Fragment {
-
+//    int number = 20;
+//    TextView desc;
+//    TextView head;
+    private SharedPreferences sharedPreferences;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -86,7 +94,8 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-
+//        desc = view.findViewById(R.id.newsDescFav);
+//        head = view.findViewById(R.id.newsHeadFav);
         /**
          * recycler view added
          */
@@ -97,7 +106,7 @@ public class NewsFragment extends Fragment {
          * trying to load data from api
          */
 
-        int number = 20;
+
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
@@ -154,7 +163,39 @@ public class NewsFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
         MainActivity.fab.hide();
 
+//        desc.setTextSize(20);
+//        head.setTextSize(20);
         return view;
     }
+
+//    @Override
+//    public void onResume() {
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+//
+//        int textValue = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")));
+//
+//        if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")))) {
+//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            desc.refreshDrawableState();
+//            head.refreshDrawableState();
+//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "22")))) {
+//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            desc.refreshDrawableState();
+//            head.refreshDrawableState();
+//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "24")))) {
+//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            desc.refreshDrawableState();
+//            head.refreshDrawableState();
+//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "26"))))
+//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
+//        desc.refreshDrawableState();
+//        head.refreshDrawableState();
+//
+//        super.onResume();
+//    }
 
 }
