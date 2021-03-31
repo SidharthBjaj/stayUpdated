@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:orientation="vertical"
     tools:context=".DetailsActivity">
 
@@ -18,9 +19,9 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cardView"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -29,17 +30,16 @@
                     android:orientation="vertical">
 
 
-
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="250dp">
 
 
                         <ProgressBar
+                            android:id="@+id/loader"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:id="@+id/loader"/>
+                            android:layout_gravity="center" />
 
                         <ImageView
                             android:id="@+id/imageView"
@@ -48,47 +48,46 @@
                             android:scaleType="centerCrop" />
 
 
-
                         <ImageView
+                            android:id="@+id/detailImage"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
-
+                            android:layout_height="match_parent" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
                             android:layout_gravity="bottom"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="10dp">
 
                             <TextView
+                                android:id="@+id/tvSource"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Source"
-                                android:textSize="15dp"
-                                android:textColor="@color/white"
-                                android:id="@+id/tvSource"/>
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
 
                             <TextView
+                                android:id="@+id/tvDate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="5 hour ago"
                                 android:gravity="right"
-                                android:textSize="15dp"
-                                android:textColor="@color/white"
-                                android:id="@+id/tvDate"/>
+                                android:text="5 hour ago"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
                         </LinearLayout>
                     </FrameLayout>
 
                     <TextView
+                        android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TITLE"
                         android:padding="10dp"
-                        android:textSize="20dp"
+                        android:text="TITLE"
                         android:textColor="@color/black"
-                        android:id="@+id/tvTitle"/>
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/tvDesc"
@@ -101,16 +100,15 @@
                 </LinearLayout>
 
 
-
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardElevation="4dp"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="6dp">
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
 
                 <ProgressBar
                     android:id="@+id/webViewLoader"

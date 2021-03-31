@@ -8,25 +8,22 @@ public class news {
     public String description;
     public String imageUrl;
     public String source;
-    public String publishDate;
     public String detailUrl;
 
 
 
-    public news(String heading, String description, String detailUrl, String source, String publishDate) {
+    public news(String heading, String description, String detailUrl, String source) {
         this.heading = heading;
         this.description = description;
         this.detailUrl = detailUrl;
         this.source = source;
-        this.publishDate = publishDate;
     }
 
-    public news(String heading, String description, String detailUrl, String source, String publishDate, String imageUrl) {
+    public news(String heading, String description, String detailUrl, String source, String section, String imageUrl) {
         this.heading = heading;
         this.description = description;
         this.detailUrl = detailUrl;
         this.source = source;
-        this.publishDate = publishDate;
         this.imageUrl = imageUrl;
     }
 
@@ -73,11 +70,5 @@ public class news {
         this.source = source;
     }
 
-    public String getPublishDate() {
-        return publishDate;
-    }
 
-    public void setPublishDate(String publishDate) {
-        this.publishDate = publishDate;
-    }
 }

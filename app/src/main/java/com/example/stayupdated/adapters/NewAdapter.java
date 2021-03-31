@@ -32,10 +32,13 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
 
     private ArrayList<news> newsItems;
     private Context context;
+    private int size;
 
-    public NewAdapter(ArrayList<news> newsItems, Context context){
+    public NewAdapter(ArrayList<news> newsItems, Context context, int size){
         this.newsItems = newsItems;
         this.context = context;
+        this.size = size;
+
     }
     @NonNull
     @Override
@@ -51,11 +54,12 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         holder.heading.setText(news.getHeading());
         holder.description.setText(news.getDescription());
         holder.source.setText(news.getSource());
-        Picasso.get().load(news.getImageUrl())
-                .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
-                .into(holder.Image);
-
-
+        if (holder.Image != null) {
+            Picasso.get().load(news.getImageUrl())
+                    .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
+                    .into(holder.Image);
+        }
+        else holder.Image.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +84,10 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
                 return true;
             }
         });
+
+        holder.description.setTextSize(size);
+        holder.heading.setTextSize(size);
+
     }
 
     @Override
@@ -102,8 +110,11 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
             Image = itemView.findViewById(R.id.imageFav);
             layout = itemView.findViewById(R.id.layout_const_fav);
             source = itemView.findViewById(R.id.sourceNews);
-
+            description.setTextSize(14);
+            heading.setTextSize(14);
         }
 
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.example.stayupdated;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -31,12 +32,12 @@ public class DetailsActivity extends AppCompatActivity {
         tvSource = findViewById(R.id.tvSource);
         tvTime = findViewById(R.id.tvDate);
         tvDesc = findViewById(R.id.tvDesc);
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.detailImage);
 
         webView = findViewById(R.id.webView);
 
         loader = findViewById(R.id.webViewLoader);
-        loader.setVisibility(View.VISIBLE);
+
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
@@ -49,10 +50,9 @@ public class DetailsActivity extends AppCompatActivity {
         tvTitle.setText(title);
         tvTime.setText(time);
         tvDesc.setText(desc);
-//        imageView.setImageResource();
+        Picasso.get().load(imageUrl).into(imageView);
 
-//        Picasso.(DetailsActivity.this).load(imageUrl).into(imageView);
-       Picasso.get().load(imageUrl).into(imageView);
+
 
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);

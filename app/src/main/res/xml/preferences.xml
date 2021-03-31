@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="Font Size" />
 
     <ListPreference
-        android:defaultValue="true"
+        android:defaultValue="14"
         android:entries="@array/font_sizes"
         android:entryValues="@array/font_sizes"
         android:key="size"
@@ -14,7 +14,7 @@
     <PreferenceCategory android:title="Number of Articles" />
 
     <ListPreference
-        android:defaultValue="true"
+        android:defaultValue="20"
         android:entries="@array/Number_of_articles"
         android:entryValues="@array/Number_of_articles"
         android:key="number"

@@ -45,9 +45,10 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class NewsFragment extends Fragment {
-//    int number = 20;
-//    TextView desc;
-//    TextView head;
+    int number = 20;
+    TextView desc;
+    TextView head;
+    ArrayList<news> newsArrayList = new ArrayList<>();
     private SharedPreferences sharedPreferences;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -94,14 +95,19 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-//        desc = view.findViewById(R.id.newsDescFav);
-//        head = view.findViewById(R.id.newsHeadFav);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        textValue = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "14")));
+        number = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("number", "20")));
+
+        desc = view.findViewById(R.id.newsDescFav);
+        head = view.findViewById(R.id.newsHeadFav);
         /**
          * recycler view added
          */
-        ArrayList<news> newsArrayList = new ArrayList<>();
 
-        RecyclerView recyclerView = view.findViewById(R.id.newsList);
+
+        recyclerView = view.findViewById(R.id.newsList);
         /**
          * trying to load data from api
          */
@@ -119,17 +125,22 @@ public class NewsFragment extends Fragment {
 
                             JSONArray newsArticles = response.getJSONArray("results");
 
-                            for (int i = 0; i < newsArticles.length(); i++) {
+                            for (int i = 0; i < number; i++) {
                                 JSONObject article = newsArticles.getJSONObject(i);
 
                                 String title = article.getString("title");
                                 String description = article.getString("abstract");
+                                String urlToImage = " ";
 
-                                String urlToImage = article.getJSONArray("multimedia").getJSONObject(0).getString("url");
+                                try {
+                                    urlToImage = article.getJSONArray("multimedia").getJSONObject(0).getString("url");
+                                }catch (Exception e){
 
+                                }
                                 String url = article.getString("url");
                                 String source = article.getString("byline");
-                                String publish = article.getString("published_date");
+                                String publish = article.getString("section");
+
 
                                 newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
 
@@ -139,14 +150,14 @@ public class NewsFragment extends Fragment {
                                 System.out.println(source);
                                 System.out.println(urlToImage);
 
-                                NewAdapter adapter = new NewAdapter(newsArrayList,getContext());
+                                NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
                                 recyclerView.setAdapter(adapter);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
                             }
 
                         } catch (JSONException e) {
-//                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Error on page", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
                     }
@@ -163,39 +174,78 @@ public class NewsFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
         MainActivity.fab.hide();
 
-//        desc.setTextSize(20);
-//        head.setTextSize(20);
         return view;
     }
 
-//    @Override
-//    public void onResume() {
-//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-//
-//        int textValue = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")));
-//
-//        if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "22")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "24")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "26"))))
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//        desc.refreshDrawableState();
-//        head.refreshDrawableState();
-//
-//        super.onResume();
-//    }
+    RecyclerView recyclerView;
+    int textValue;
+    @Override
+    public void onResume() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        textValue = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "14")));
+        number = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("number","20")));
+        NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
+
+
+        recyclerView.setAdapter(adapter);
+
+        String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, newsUrl, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+                        try {
+
+                            JSONArray newsArticles = response.getJSONArray("results");
+                            newsArrayList = new ArrayList<>();
+                            for (int i = 0; i < number; i++) {
+                                JSONObject article = newsArticles.getJSONObject(i);
+
+                                String title = article.getString("title");
+                                String description = article.getString("abstract");
+                                String urlToImage = " ";
+
+                                try {
+                                    urlToImage = article.getJSONArray("multimedia").getJSONObject(0).getString("url");
+                                }catch (Exception e){
+
+                                }
+                                String url = article.getString("url");
+                                String source = article.getString("byline");
+                                String publish = article.getString("section");
+
+
+                                newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
+
+                                System.out.println(title);
+                                System.out.println(description);
+                                System.out.println(url);
+                                System.out.println(source);
+                                System.out.println(urlToImage);
+
+                                NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
+                                recyclerView.setAdapter(adapter);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                            }
+
+                        } catch (JSONException e) {
+//                            Toast.makeText(getContext(), "Error on page", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(jsonObjectRequest);
+        super.onResume();
+    }
 
 }
