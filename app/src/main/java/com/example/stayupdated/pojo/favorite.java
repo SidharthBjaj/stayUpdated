@@ -27,6 +27,12 @@ public class favorite implements Parcelable {
     }
 
     public favorite() {
+        this.heading = "";
+        this.description = "";
+        this.imageUrl = "";
+    }
+
+    public favorite(String heading, String description, String imageUrl) {
         this.heading = heading;
         this.description = description;
         this.imageUrl = imageUrl;

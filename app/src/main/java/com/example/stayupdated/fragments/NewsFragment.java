@@ -97,7 +97,7 @@ public class NewsFragment extends Fragment {
          * trying to load data from api
          */
 
-
+        int number = 20;
 
         String newsUrl = "https://api.nytimes.com/svc/topstories/v2/us.json?api-key=AUcyvFUSWo67pK4XTvcnAjBpcpmm3v09";
 
