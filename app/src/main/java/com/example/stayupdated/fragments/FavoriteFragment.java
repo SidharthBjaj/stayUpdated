@@ -30,9 +30,7 @@ import static com.example.stayupdated.MainActivity.fab;
  * create an instance of this fragment.
  */
 public class FavoriteFragment extends Fragment {
-    int number = 20;
-    TextView desc;
-    TextView head;
+
 
     private SharedPreferences sharedPreferences;
     // TODO: Rename parameter arguments, choose names that match
@@ -85,22 +83,11 @@ public class FavoriteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
-        desc = view.findViewById(R.id.newsHead);
-        head = view.findViewById(R.id.newsDesc);
+
         fab.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
-        fab.show();
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle extra = new Bundle();
-                extra.putInt(CreateUpdateFragment.ACTION_TYPE, CreateUpdateFragment.CREATE);
-                Navigation.findNavController(view).navigate(R.id.nav_create,extra);
-            }
-        });
+        fab.hide();
         database db = new database(getContext());
         ArrayList<favorite> favorites = db.getAllFavorites();
-//        desc.setTextSize(20);
-//        head.setTextSize(20);
         db.close();
 
         FavoriteAdapter adapter = new FavoriteAdapter(favorites,getContext());
@@ -109,33 +96,4 @@ public class FavoriteFragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public void onResume() {
-//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-//
-//        int textValue = Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")));
-//
-//        if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "20")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "22")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "24")))) {
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//            desc.refreshDrawableState();
-//            head.refreshDrawableState();
-//        } else if (textValue == Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString("size", "26"))))
-//            desc.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//        head.setTextSize(Float.parseFloat(String.valueOf(textValue)));
-//        desc.refreshDrawableState();
-//        head.refreshDrawableState();
-//
-//        super.onResume();
-//    }
 }

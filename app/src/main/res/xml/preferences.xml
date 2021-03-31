@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp">
 
     <PreferenceCategory android:title="Font Size" />
 
@@ -7,6 +8,7 @@
         android:defaultValue="14"
         android:entries="@array/font_sizes"
         android:entryValues="@array/font_sizes"
+        android:icon="@drawable/ic_baseline_format_size_24"
         android:key="size"
         android:summary="Please select the font size"
         android:title="Text Size" />
@@ -14,9 +16,10 @@
     <PreferenceCategory android:title="Number of Articles" />
 
     <ListPreference
-        android:defaultValue="20"
+        android:defaultValue="15"
         android:entries="@array/Number_of_articles"
         android:entryValues="@array/Number_of_articles"
+        android:icon="@drawable/ic_baseline_format_list_numbered_24"
         android:key="number"
         android:summary="Please select the number of article"
         android:title="Articles" />

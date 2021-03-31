@@ -59,7 +59,9 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
                     .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
                     .into(holder.Image);
         }
-        else holder.Image.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
+        else {
+            holder.Image.setImageResource(R.drawable.googlemaps);
+        }
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +89,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
 
         holder.description.setTextSize(size);
         holder.heading.setTextSize(size);
+        holder.source.setTextSize(size);
 
     }
 
@@ -112,6 +115,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
             source = itemView.findViewById(R.id.sourceNews);
             description.setTextSize(14);
             heading.setTextSize(14);
+            source.setTextSize(14);
         }
 
     }
