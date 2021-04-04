@@ -1,9 +1,11 @@
 package com.example.stayupdated.fragments;
 
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +37,8 @@ public class FavoriteFragment extends Fragment {
 
 
     private SharedPreferences sharedPreferences;
+
+    Boolean delete ;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,12 +83,15 @@ public class FavoriteFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
+
 
         fab.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
         fab.hide();
@@ -96,6 +103,17 @@ public class FavoriteFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
+    }
+    @Override
+    public void onResume() {
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        delete = sharedPreferences.getBoolean("drop",false);
+        if (delete == true){
+            database db = new database(getContext());
+            db.dropFavorite();
+        }
+        super.onResume();
     }
 
 }

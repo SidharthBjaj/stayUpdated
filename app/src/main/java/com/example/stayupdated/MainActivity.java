@@ -1,11 +1,14 @@
 package com.example.stayupdated;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.stayupdated.database.database;
+import com.example.stayupdated.pojo.favorite;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -18,17 +21,24 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     public static FloatingActionButton fab;
     private AppBarConfiguration mAppBarConfiguration;
+    private SharedPreferences sharedPreferences;
+
+    Boolean delete ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        delete = false;
         setSupportActionBar(toolbar);
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,5 +81,16 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    @Override
+    public void onResume() {
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        delete = sharedPreferences.getBoolean("drop",false);
+        if (delete == true){
+            database db = new database(this);
+            db.dropFavorite();
+        }
+        super.onResume();
     }
 }

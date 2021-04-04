@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.stayupdated.pojo.news;
 import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvSource = findViewById(R.id.tvSource);
         tvTime = findViewById(R.id.tvDate);
         tvDesc = findViewById(R.id.tvDesc);
-        imageView = findViewById(R.id.detailImage);
+        imageView = findViewById(R.id.imageView);
 
         webView = findViewById(R.id.webView);
 
@@ -43,15 +44,15 @@ public class DetailsActivity extends AppCompatActivity {
         String title = intent.getStringExtra("title");
         String time = intent.getStringExtra("byLine");
         String desc = intent.getStringExtra("abstract");
-        String imageUrl = intent.getStringExtra("imageUrl");
+        String imageUrl = intent.getStringExtra("urlToImage");
         String url = intent.getStringExtra("url");
 
 
         tvTitle.setText(title);
         tvTime.setText(time);
         tvDesc.setText(desc);
-        Picasso.get().load(imageUrl).into(imageView);
-
+        Picasso.get().load(imageUrl)
+                .into(imageView);
 
 
         webView.getSettings().setDomStorageEnabled(true);

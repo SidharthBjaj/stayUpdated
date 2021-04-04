@@ -24,5 +24,12 @@
         android:summary="Please select the number of article"
         android:title="Articles" />
 
+    <PreferenceCategory android:title="Clear Table" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="drop"
+        android:title="delete"
+        android:summary="drop favorite table"/>
+
 
 </PreferenceScreen>

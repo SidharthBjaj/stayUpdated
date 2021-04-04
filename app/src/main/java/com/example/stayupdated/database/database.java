@@ -12,6 +12,7 @@ import com.example.stayupdated.pojo.favorite;
 
 import java.util.ArrayList;
 
+
 public class database extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
@@ -26,11 +27,9 @@ public class database extends SQLiteOpenHelper {
       Column names
      */
     public static final String COLUMN_ID = "id";
-
     public static final String COLUMN_NAME = "name"; //name
     public static final String COLUMN_DESC = "description"; //description
     public static final String COLUMN_IMAGE = "image"; //image
-    public static final String COLUMN_EDIT = "edit"; //image
 
 
     public static final String CREATE_FAV_TABLE = "CREATE TABLE " +
@@ -38,9 +37,11 @@ public class database extends SQLiteOpenHelper {
             COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
              COLUMN_IMAGE + " TEXT)";
 
+
     public database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -118,4 +119,9 @@ public class database extends SQLiteOpenHelper {
     }
 
 
+    public void dropFavorite() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM "+ TABLE_FAVORITE);
+        db.close();
+    }
 }
