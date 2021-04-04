@@ -8,6 +8,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -32,6 +34,8 @@ public class CreateUpdateFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_update, container, false);
         EditText name = view.findViewById(R.id.memberName);
         EditText postion = view.findViewById(R.id.positionText);
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animate_in);
+        view.startAnimation(animation);
         Button submit = view.findViewById(R.id.submitButton);
 
         if (getArguments() != null){

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -68,6 +70,8 @@ public class ViewPager2Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_view_pager2, container, false);
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animate_in);
+        view.startAnimation(animation);
 /**
  * assigning values to viewpager using ids from layout
  */

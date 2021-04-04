@@ -14,6 +14,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.stayupdated.R;
 import com.google.android.material.tabs.TabLayout;
@@ -78,6 +80,8 @@ public class CreditsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_credits, container, false);
         creditsViewPager = view.findViewById(R.id.creditsViewPager);
         creditsViewPager.setAdapter(new CustomViewPager2Adapter(getActivity()));
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animate_in);
+        view.startAnimation(animation);
         return view;
     }
 
