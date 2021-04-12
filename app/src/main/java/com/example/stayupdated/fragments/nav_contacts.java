@@ -121,7 +121,7 @@ public class nav_contacts extends Fragment {
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri location = Uri.parse("geo:0,0?q=42.2484642,-83.0225078(St Clair College)");
+                Uri location = Uri.parse("geo:0,0?q=42.2441932,-83.0256864");
                 Intent intent = new Intent(Intent.ACTION_VIEW,location);
                 startActivity(intent);
             }
