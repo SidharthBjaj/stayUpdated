@@ -34,6 +34,10 @@ public class CreateUpdateFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_update, container, false);
         EditText name = view.findViewById(R.id.memberName);
         EditText postion = view.findViewById(R.id.positionText);
+
+        /**
+         * utilizing update data to update the article information from favorite screen by clicking the edit button from the favorite fragment
+         */
         Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animate_in);
         view.startAnimation(animation);
         Button submit = view.findViewById(R.id.submitButton);

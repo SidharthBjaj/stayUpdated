@@ -62,6 +62,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         else {
             holder.Image.setImageResource(R.drawable.googlemaps);
         }
+
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +75,10 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
                 context.startActivity(intent);
             }
         });
+
+        /**
+         * adding the data for favorite page along with adding the information to database for addition editing of reader with notes.
+         */
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

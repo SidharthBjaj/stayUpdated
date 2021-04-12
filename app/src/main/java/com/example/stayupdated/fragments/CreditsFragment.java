@@ -85,20 +85,22 @@ public class CreditsFragment extends Fragment {
         return view;
     }
 
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
-//        new TabLayoutMediator(tabLayout, creditsViewPager, (tab, position) ->
-//                tab.setText("STEP " + (position +1))).attach();
-//
-//    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        new TabLayoutMediator(tabLayout, creditsViewPager, (tab, position) ->
+                tab.setText("STEP " + (position +1))).attach();
+
+    }
 
     private class CustomViewPager2Adapter extends FragmentStateAdapter {
         public CustomViewPager2Adapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);
         }
-
+        /**
+         * trying to load data from api
+         */
         @NonNull
         @Override
         public Fragment createFragment(int position) {

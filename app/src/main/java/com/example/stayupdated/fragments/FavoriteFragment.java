@@ -92,7 +92,10 @@ public class FavoriteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.favoriteList);
 
-
+/**
+ * reloading arraylist from database to check for values in the database
+ * displays the card views with added news articles to favorite screen.
+ */
         fab.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
         fab.hide();
         database db = new database(getContext());

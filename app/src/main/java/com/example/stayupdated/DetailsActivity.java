@@ -26,7 +26,9 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
+/**
+ * getting data from news adapter which is being obtained from news adapter to display the information in details activity alon with webview
+ */
 
 
         tvTitle = findViewById(R.id.tvTitle);

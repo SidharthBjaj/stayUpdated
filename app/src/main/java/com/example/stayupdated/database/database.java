@@ -103,6 +103,10 @@ public class database extends SQLiteOpenHelper {
         db.close();
         return favorites;
     }
+
+    /**
+     * update location
+     */
     public int updateData(favorite favorite){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -111,6 +115,9 @@ public class database extends SQLiteOpenHelper {
         return db.update(TABLE_FAVORITE,values,COLUMN_ID+ "=?", new String[]{String.valueOf(favorite.getId())});
     }
 
+    /**
+     * delete location on long click
+     */
     public void deleteLocation(int location){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_FAVORITE, COLUMN_ID +  "=?",
@@ -118,6 +125,9 @@ public class database extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * drop table data (3rd settings command)
+     */
 
     public void dropFavorite() {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -143,7 +143,9 @@ public class NewsFragment extends Fragment {
                                 String source = article.getString("byline");
                                 String publish = article.getString("section");
 
-
+/**
+ * adding data to new arraylist to be displayed in the card view
+ */
                                 newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
 
                                 System.out.println(title);
@@ -178,7 +180,10 @@ public class NewsFragment extends Fragment {
 
         return view;
     }
-
+    /**
+     * Using shared preference to access settings menu for the whole project for limiting the number of cards/news articles on the screen
+     * along with changing font sizes to be implemented on whole project
+     */
     RecyclerView recyclerView;
     int textValue;
     @Override
