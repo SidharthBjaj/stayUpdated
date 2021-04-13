@@ -148,11 +148,7 @@ public class NewsFragment extends Fragment {
  */
                                 newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
 
-                                System.out.println(title);
-                                System.out.println(description);
-                                System.out.println(url);
-                                System.out.println(source);
-                                System.out.println(urlToImage);
+
 
                                 NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
                                 recyclerView.setAdapter(adapter);
@@ -225,12 +221,7 @@ public class NewsFragment extends Fragment {
 
 
                                 newsArrayList.add(new news(title, description, url,source,publish,urlToImage));
-
-                                System.out.println(title);
-                                System.out.println(description);
-                                System.out.println(url);
-                                System.out.println(source);
-                                System.out.println("image "+urlToImage);
+                                
 
                                 NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
                                 recyclerView.setAdapter(adapter);
