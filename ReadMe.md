@@ -46,7 +46,13 @@ users ability to change font sizes, number of articles along with deleting favor
 - User can then access the contacts page for contacting the developer with actual details.
 - User can also change the font size along with number of articles in the news page by visiting news page and then clicking on the top right corner 
   to access setting menu for changing font size, number of articles and deleting the favorite table. 
-  
+
+## Gif 
+
+
+<img src="https://user-images.githubusercontent.com/72910540/114485773-8155ed00-9bda-11eb-87f7-5e082276c83d.gif" height="400" width="200"/>
+
+
 ## Database Schema
 
 | TABLENAME |
