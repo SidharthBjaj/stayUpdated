@@ -16,7 +16,7 @@
     <PreferenceCategory android:title="Number of Articles" />
 
     <ListPreference
-        android:defaultValue="15"
+        android:defaultValue="10"
         android:entries="@array/Number_of_articles"
         android:entryValues="@array/Number_of_articles"
         android:icon="@drawable/ic_baseline_format_list_numbered_24"

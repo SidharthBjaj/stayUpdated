@@ -212,7 +212,7 @@ public class NewsFragment extends Fragment {
 
                                 String title = article.getString("title");
                                 String description = article.getString("abstract");
-                                String urlToImage = " ";
+                                String urlToImage = "";
 
                                 try {
                                     urlToImage = article.getJSONArray("multimedia").getJSONObject(0).getString("url");
@@ -230,7 +230,7 @@ public class NewsFragment extends Fragment {
                                 System.out.println(description);
                                 System.out.println(url);
                                 System.out.println(source);
-                                System.out.println(urlToImage);
+                                System.out.println("image "+urlToImage);
 
                                 NewAdapter adapter = new NewAdapter(newsArrayList,getContext(),textValue);
                                 recyclerView.setAdapter(adapter);

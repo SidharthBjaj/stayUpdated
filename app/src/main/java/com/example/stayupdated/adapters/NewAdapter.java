@@ -54,13 +54,13 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.CustomerViewHold
         holder.heading.setText(news.getHeading());
         holder.description.setText(news.getDescription());
         holder.source.setText(news.getSource());
-        if (holder.Image != null) {
-            Picasso.get().load(news.getImageUrl())
-                    .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
-                    .into(holder.Image);
-        }
-        else {
-            holder.Image.setImageResource(R.drawable.googlemaps);
+        if (news.getImageUrl() != "") {
+                Picasso.get().load(news.getImageUrl())
+                        .placeholder(R.drawable.ic_baseline_add_circle_outline_24)
+                        .into(holder.Image);
+
+        } else {
+            holder.Image.setImageResource(R.drawable.ic_baseline_add_circle_outline_24);
         }
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
